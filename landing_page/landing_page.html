@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Laboratório de Tesouraria | Inteligência Financeira</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-container": "#003f33",
+              "tertiary-fixed-dim": "#f58600",
+              "secondary": "#dce4e4",
+              "on-surface-variant": "#aaabb0",
+              "surface-container-highest": "#23262c",
+              "surface-container": "#171a1f",
+              "tertiary-container": "#fd8b00",
+              "on-secondary-container": "#c9d2d1",
+              "on-background": "#f6f6fc",
+              "on-primary-fixed-variant": "#006452",
+              "on-secondary": "#4b5353",
+              "on-tertiary-fixed": "#291200",
+              "on-error-container": "#ffa8a3",
+              "tertiary-dim": "#ed8200",
+              "secondary-dim": "#cdd6d6",
+              "surface-bright": "#292c33",
+              "inverse-surface": "#f9f9ff",
+              "on-tertiary-fixed-variant": "#5a2e00",
+              "secondary-fixed": "#dce4e4",
+              "on-error": "#490006",
+              "outline-variant": "#46484d",
+              "surface-dim": "#0c0e12",
+              "surface-tint": "#58f5d1",
+              "on-primary": "#005949",
+              "inverse-on-surface": "#53555a",
+              "background": "#0c0e12",
+              "surface-container-low": "#111318",
+              "error-container": "#9f0519",
+              "on-surface": "#f6f6fc",
+              "secondary-fixed-dim": "#cdd6d6",
+              "surface-variant": "#23262c",
+              "on-secondary-fixed": "#394141",
+              "primary-container": "#1cd0ad",
+              "primary-fixed": "#58f5d1",
+              "surface-container-high": "#1d2025",
+              "error": "#ff716c",
+              "surface": "#0c0e12",
+              "surface-container-lowest": "#000000",
+              "error-dim": "#d7383b",
+              "primary-dim": "#45e7c3",
+              "inverse-primary": "#006c59",
+              "primary": "#58f5d1",
+              "on-secondary-fixed-variant": "#555d5d",
+              "on-tertiary-container": "#442100",
+              "secondary-container": "#404848",
+              "outline": "#74757a",
+              "on-primary-fixed": "#004437",
+              "on-tertiary": "#532a00",
+              "tertiary-fixed": "#ff9734",
+              "tertiary": "#ff9f4a",
+              "primary-fixed-dim": "#45e7c3"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .glass-card {
+        background: rgba(35, 38, 44, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .glow-primary {
+        box-shadow: 0 0 40px -10px rgba(88, 245, 209, 0.3);
+      }
+      .mesh-bg {
+        background-image: radial-gradient(at 0% 0%, rgba(88, 245, 209, 0.15) 0px, transparent 50%),
+                          radial-gradient(at 100% 100%, rgba(28, 208, 173, 0.1) 0px, transparent 50%);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-[#0c0e12]/60 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-black/40">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-black text-[#58f5d1] tracking-tighter font-headline">
+                Laboratório de Tesouraria
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-headline font-bold tracking-tight text-[#58f5d1] border-b-2 border-[#58f5d1] pb-1 transition-all duration-300" href="#">Início</a>
+<a class="font-headline font-bold tracking-tight text-[#aaabb0] hover:text-[#f6f6fc] transition-colors transition-all duration-300" href="#">Módulos</a>
+<a class="font-headline font-bold tracking-tight text-[#aaabb0] hover:text-[#f6f6fc] transition-colors transition-all duration-300" href="#">Sobre</a>
+<a class="font-headline font-bold tracking-tight text-[#aaabb0] hover:text-[#f6f6fc] transition-colors transition-all duration-300" href="#">Contato</a>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-headline font-bold px-6 py-2 rounded-full scale-95 active:scale-90 transition-transform hover:opacity-80">
+                Entrar
+            </button>
+</div>
+</nav>
+<main class="mesh-bg pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[70vh] flex items-center px-8 max-w-7xl mx-auto overflow-hidden">
+<div class="w-full text-center py-20">
+<div class="z-10">
+<span class="font-label text-primary tracking-[0.3em] text-xs uppercase mb-6 block">Laboratório de Tesouraria de Bancos</span>
+<h1 class="font-headline text-5xl md:text-8xl font-extrabold tracking-tight leading-[1.1] mb-8 max-w-5xl mx-auto">
+                        Sua Janela para a <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-dim">Inteligência Financeira</span>
+</h1>
+<p class="text-on-surface-variant text-lg md:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed font-light italic">
+                        Desenvolva maestria estratégica através do rigor acadêmico aplicado à prática bancária contemporânea. Uma imersão técnica voltada à excelência na gestão de liquidez, mitigação de riscos e otimização de capital para gestores de alta performance.
+                    </p>
+</div>
+<!-- Background Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+</div>
+</section>
+<!-- Modules Section (Bento Grid) -->
+<section class="py-24 px-8 max-w-7xl mx-auto" id="modulos">
+<div class="mb-16">
+<h2 class="font-headline text-4xl font-extrabold mb-4">Nossos Módulos</h2>
+<div class="w-20 h-1.5 bg-primary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Module 1: Operações Fundamentais -->
+<div class="glass-card rounded-xl p-8 hover:bg-surface-container-high transition-all group border-none">
+<div class="flex justify-between items-start mb-12">
+<div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">account_balance</span>
+</div>
+<span class="font-label text-on-surface-variant/40 text-4xl font-bold">01</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Módulo 1: Operações Fundamentais</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+                        Captação, Aplicação e Gestão de Caixa
+                    </p>
+<div class="flex items-center gap-2 text-primary font-headline font-bold cursor-pointer group-hover:gap-4 transition-all">
+                        Explorar Conteúdo <span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+<!-- Module 2: A Curva de Juros (ETTJ) -->
+<div class="glass-card rounded-xl p-8 hover:bg-surface-container-high transition-all group border-none">
+<div class="flex justify-between items-start mb-12">
+<div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">show_chart</span>
+</div>
+<span class="font-label text-on-surface-variant/40 text-4xl font-bold">02</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Módulo 2: A Curva de Juros (ETTJ)</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+                        Construção, Interpolação e Cenários
+                    </p>
+<div class="flex items-center gap-2 text-primary font-headline font-bold cursor-pointer group-hover:gap-4 transition-all">
+                        Explorar Conteúdo <span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+<!-- Module 3: Precificação de Ativos -->
+<div class="glass-card rounded-xl p-8 hover:bg-surface-container-high transition-all group border-none">
+<div class="flex justify-between items-start mb-12">
+<div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<span class="font-label text-on-surface-variant/40 text-4xl font-bold">03</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Módulo 3: Precificação de Ativos</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+                        Títulos Públicos, Bancários e Corporativos
+                    </p>
+<div class="flex items-center gap-2 text-primary font-headline font-bold cursor-pointer group-hover:gap-4 transition-all">
+                        Explorar Conteúdo <span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+<!-- Module 4: Gestão de Carregamento -->
+<div class="glass-card rounded-xl p-8 hover:bg-surface-container-high transition-all group border-none">
+<div class="flex justify-between items-start mb-12">
+<div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">monitoring</span>
+</div>
+<span class="font-label text-on-surface-variant/40 text-4xl font-bold">04</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Módulo 4: Gestão de Carregamento</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+                        Estratégias, Duration e Imunização
+                    </p>
+<div class="flex items-center gap-2 text-primary font-headline font-bold cursor-pointer group-hover:gap-4 transition-all">
+                        Explorar Conteúdo <span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#111318] dark:bg-[#111318] w-full py-12 border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-6">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="text-lg font-bold text-[#f6f6fc] font-headline">Laboratório de Tesouraria</div>
+<p class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-[#aaabb0]">© 2024 Laboratório de Tesouraria. Inteligência Financeira Avançada.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-[#aaabb0] hover:text-[#58f5d1] transition-colors" href="#">Termos de Uso</a>
+<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-[#aaabb0] hover:text-[#58f5d1] transition-colors" href="#">Privacidade</a>
+<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-[#aaabb0] hover:text-[#58f5d1] transition-colors" href="#">Suporte</a>
+<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-[#aaabb0] hover:text-[#58f5d1] transition-colors" href="#">Documentação</a>
+</div>
+</div>
+</footer>
+</body></html>

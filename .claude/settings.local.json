@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.\\(md|txt|yml|yaml|toml|cfg|ini|py\\)$|requirements|setup\\\\.|pyproject\\\\.|\\\\.env|\\\\.cursorrules|\\\\.gitignore\")",
+      "Bash(wc:*)",
+      "Bash(find /c/jose_americo/laboratorio-tesouraria-bancos -type f -name *.ts -o -name *.tsx -o -name *.js -o -name *.jsx -o -name *.json -o -name *.py)",
+      "Bash(find C:jose_americolaboratorio-tesouraria-bancos -maxdepth 2 -type f \\\\\\(-name *.txt -o -name *.md -o -name *.yml -o -name *.yaml -o -name *.toml -o -name *.cfg -o -name requirements* -o -name setup.* -o -name pyproject.* \\\\\\))",
+      "Bash(find . -type f -exec wc -l {} +)",
+      "Bash(bash \"C:\\\\Users\\\\felip\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\5.0.6\\\\skills\\\\brainstorming\\\\scripts\\\\start-server.sh\" --project-dir \"C:\\\\jose_americo\\\\laboratorio-tesouraria-bancos\")",
+      "Bash(curl -s http://localhost:52110 -o /dev/null -w \"%{http_code}\")",
+      "Bash(curl -s http://localhost:52110)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --no-turbopack --import-alias \"@/*\" --yes)",
+      "Bash(npm install:*)",
+      "Bash(npx next:*)",
+      "Bash(npm run:*)",
+      "Bash(bash \"C:\\\\Users\\\\felip\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\5.0.6\\\\scripts\\\\start-server.sh\" --project-dir \"C:\\\\jose_americo\\\\laboratorio-tesouraria-bancos\")",
+      "Bash(bash \"C:/Users/felip/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.6/skills/brainstorming/scripts/start-server.sh\" --project-dir \"C:/jose_americo/laboratorio-tesouraria-bancos\")"
+    ]
+  }
+}
