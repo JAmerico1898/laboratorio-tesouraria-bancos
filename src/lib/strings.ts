@@ -40,4 +40,20 @@ export const strings = {
   // Coming soon
   comingSoon: "Em Breve",
   comingSoonSubtitle: "Este módulo está em desenvolvimento.",
+
+  // Module 1 landing
+  mod1Eyebrow: "Módulo 01",
+  mod1Title: "Operações Fundamentais",
+  mod1Subtitle: "Captação, Aplicação e Gestão de Caixa",
+  mod1Overview:
+    "A tesouraria é o centro nevrálgico da gestão financeira de um banco. " +
+    "É nela que se gerenciam as posições de liquidez, se precificam operações, " +
+    "se monitoram riscos de mercado e se tomam decisões de alocação que impactam " +
+    "diretamente o resultado da instituição. Este módulo oferece ferramentas " +
+    "interativas para desenvolver a intuição gerencial necessária a esse papel.",
+  mod1OverviewLabel: "Visão Geral",
+  mod1ExerciseTitle: "Exercício Integrador — Decisão de Tesouraria",
+  mod1ExerciseDescription:
+    "Sintetize todos os blocos em uma decisão de alocação de R$ 50 milhões",
+  explore: "Explorar",
 } as const;
