@@ -18,11 +18,11 @@ export function ModuleTabBar({ tabs }: ModuleTabBarProps) {
 
   return (
     <div className="sticky top-[57px] z-40 bg-surface-container-low border-b border-outline-variant/30 overflow-x-auto">
-      <div className="max-w-7xl mx-auto flex gap-0 px-6">
+      <div className="max-w-7xl mx-auto flex px-6">
         {tabs.map((tab) => {
           const isActive =
-            tab.href === pathname ||
-            (tab.href !== tabs[0].href && pathname.startsWith(tab.href));
+            pathname === tab.href ||
+            pathname.startsWith(tab.href + "/");
 
           return (
             <Link
