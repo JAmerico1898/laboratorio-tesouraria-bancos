@@ -26,7 +26,10 @@ export function Navbar() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-7">
           {NAV_ITEMS.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(item.href + "/");
             return (
               <Link
                 key={item.href}
@@ -59,7 +62,10 @@ export function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-surface-container border-t border-white/5 px-6 py-4 flex flex-col gap-3">
           {NAV_ITEMS.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(item.href + "/");
             return (
               <Link
                 key={item.href}
