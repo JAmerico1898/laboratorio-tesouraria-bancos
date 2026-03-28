@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { calcPressao, CENARIO_DELTAS } from "@/lib/data";
+import { useState, useEffect, useMemo } from "react";
+import { calcPressao, CENARIO_DELTAS, loadSelicMeta } from "@/lib/data";
 import { fmtPct } from "@/lib/format";
 import { PlotlyChart } from "@/components/plotly-chart";
 import { PLOTLY_LAYOUT, PLOTLY_CONFIG } from "@/lib/chart-config";
@@ -150,6 +150,15 @@ function ScenarioInputs({
 
 export function TabCenarios() {
   const [selicAtual, setSelicAtual] = useState(14.25);
+
+  // Load latest SELIC Meta from CSV as default
+  useEffect(() => {
+    loadSelicMeta().then((data) => {
+      if (data.length > 0) {
+        setSelicAtual(data[data.length - 1].valor);
+      }
+    });
+  }, []);
 
   // Base scenario
   const [baseIpca, setBaseIpca] = useState(4.5);
