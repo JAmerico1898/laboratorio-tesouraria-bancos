@@ -13,7 +13,7 @@ export function MatematicaFinanceiraContent() {
   const [activeTab, setActiveTab] = useState("cap");
 
   return (
-    <main className="mesh-bg pt-8 pb-20">
+    <main className="mesh-bg pt-16 pb-20">
       <div className="max-w-5xl mx-auto px-6">
         <h1 className="font-headline text-2xl md:text-3xl font-extrabold mb-3">
           📐 Matemática Financeira Aplicada à Tesouraria

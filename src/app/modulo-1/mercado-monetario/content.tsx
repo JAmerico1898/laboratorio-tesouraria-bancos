@@ -127,7 +127,7 @@ export function MercadoMonetarioContent() {
         type: "scatter",
         mode: "lines",
         name: "SELIC Meta",
-        line: { color: "#1B3A5C", width: 2, dash: "solid" },
+        line: { color: "#5B8AB5", width: 2, dash: "solid" },
         hovertemplate: "%{x|%d/%m/%Y}: <b>%{y:.2f}%</b><extra>SELIC Meta</extra>",
       });
     }
@@ -275,7 +275,7 @@ export function MercadoMonetarioContent() {
   // ----- render -----
   if (loading) {
     return (
-      <main className="mesh-bg pt-8 pb-20">
+      <main className="mesh-bg pt-16 pb-20">
         <div className="max-w-5xl mx-auto px-6">
           <p className="text-on-surface-variant text-sm">Carregando dados...</p>
         </div>
@@ -286,7 +286,7 @@ export function MercadoMonetarioContent() {
   const noData = selicMeta.length === 0 && selicOver.length === 0 && cdiDiario.length === 0;
 
   return (
-    <main className="mesh-bg pt-8 pb-20">
+    <main className="mesh-bg pt-16 pb-20">
       <div className="max-w-5xl mx-auto px-6 space-y-8">
         {/* Header */}
         <div>
@@ -310,8 +310,8 @@ export function MercadoMonetarioContent() {
           </summary>
           <div className="px-5 pb-5 space-y-4 text-sm text-on-surface-variant">
             <div className="grid md:grid-cols-3 gap-4 mt-2">
-              <div className="glass-card rounded-lg p-4 border-t-2 border-[#1B3A5C]">
-                <h3 className="font-headline font-bold text-on-surface mb-2 text-[#1B3A5C]">
+              <div className="glass-card rounded-lg p-4 border-t-2 border-[#5B8AB5]">
+                <h3 className="font-headline font-bold text-on-surface mb-2 text-[#5B8AB5]">
                   SELIC Meta
                 </h3>
                 <p>
@@ -405,9 +405,9 @@ export function MercadoMonetarioContent() {
                     type="checkbox"
                     checked={showSelicMeta}
                     onChange={(e) => setShowSelicMeta(e.target.checked)}
-                    className="accent-[#1B3A5C]"
+                    className="accent-[#5B8AB5]"
                   />
-                  <span className="text-sm font-label" style={{ color: "#1B3A5C" }}>
+                  <span className="text-sm font-label" style={{ color: "#5B8AB5" }}>
                     SELIC Meta
                   </span>
                 </label>
@@ -557,7 +557,7 @@ export function MercadoMonetarioContent() {
                         {fmtPct(row.desvio, 2)}
                       </td>
                       <td className="px-4 py-3 text-right text-on-surface-variant font-label">
-                        {fmtNum(row.n)}
+                        {row.n.toLocaleString("pt-BR")}
                       </td>
                     </tr>
                   ))}
@@ -607,10 +607,13 @@ export function MercadoMonetarioContent() {
                   Principal (R$)
                 </label>
                 <input
-                  type="number"
-                  value={cdiAmount}
-                  onChange={(e) => setCdiAmount(Number(e.target.value))}
-                  step={10000}
+                  type="text"
+                  inputMode="numeric"
+                  value={cdiAmount.toLocaleString("pt-BR")}
+                  onChange={(e) => {
+                    const raw = e.target.value.replace(/\D/g, "");
+                    setCdiAmount(Number(raw) || 0);
+                  }}
                   className={INPUT_CLASS}
                 />
               </div>
