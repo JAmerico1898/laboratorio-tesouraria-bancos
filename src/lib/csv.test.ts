@@ -32,4 +32,17 @@ describe("parseCsv", () => {
     const result = parseCsv(text);
     expect(result[0]).toEqual({ data: "2024-01-01", valor: "13.75" });
   });
+  it("parses semicolon-separated CSV", () => {
+    const text = "data;valor\n01/15/2024;100.5\n01/16/2024;101.2";
+    const result = parseCsv(text, ";");
+    expect(result).toEqual([
+      { data: "01/15/2024", valor: "100.5" },
+      { data: "01/16/2024", valor: "101.2" },
+    ]);
+  });
+  it("strips BOM character", () => {
+    const text = "\uFEFFdata;valor\n01/15/2024;100.5";
+    const result = parseCsv(text, ";");
+    expect(result[0].data).toBe("01/15/2024");
+  });
 });
