@@ -31,3 +31,14 @@ export function taxaForward(sc: number, pc: number, sl: number, pl: number): num
   if (fc === 0) return 0;
   return Math.pow(fl / fc, 252 / pf) - 1;
 }
+
+export const SPREADS_CREDITO: Record<string, [number, number]> = {
+  "AAA": [30, 60], "AA": [60, 120], "A": [120, 200], "BBB": [150, 250],
+  "BB": [250, 400], "B": [400, 700], "CCC": [700, 1200],
+};
+
+export const PREMIO_LIQUIDEZ: Record<string, [number, number]> = {
+  "Alta (títulos públicos, DI)": [0, 10],
+  "Média (debêntures investment grade)": [15, 40],
+  "Baixa (crédito privado ilíquido)": [50, 120],
+};
