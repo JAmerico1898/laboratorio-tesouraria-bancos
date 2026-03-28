@@ -65,6 +65,60 @@ export async function loadFocus(): Promise<FocusDataPoint[]> {
     .sort((a, b) => a.dataColeta.localeCompare(b.dataColeta));
 }
 
+export interface CurvaDiPoint {
+  data: string;
+  prazoDu: number;
+  taxa: number;
+}
+
+export interface NtnbTaxaPoint {
+  data: string;
+  prazoDu: number;
+  taxa: number;
+}
+
+export interface FocusIpcaPoint {
+  dataColeta: string;
+  variavel: string;
+  mediana: number;
+}
+
+export async function loadCurvasDi(): Promise<CurvaDiPoint[]> {
+  const rows = await fetchCsv("curvas_di.csv");
+  return rows
+    .map((r) => ({
+      data: r.data,
+      prazoDu: parseInt(r.prazo_du, 10),
+      taxa: parseFloat(r.taxa),
+    }))
+    .filter((r) => !isNaN(r.prazoDu) && !isNaN(r.taxa))
+    .sort((a, b) => a.data.localeCompare(b.data) || a.prazoDu - b.prazoDu);
+}
+
+export async function loadNtnbTaxas(): Promise<NtnbTaxaPoint[]> {
+  const rows = await fetchCsv("ntnb_taxas.csv");
+  return rows
+    .map((r) => ({
+      data: r.data,
+      prazoDu: parseInt(r.prazo_du, 10),
+      taxa: parseFloat(r.taxa),
+    }))
+    .filter((r) => !isNaN(r.prazoDu) && !isNaN(r.taxa))
+    .sort((a, b) => a.data.localeCompare(b.data) || a.prazoDu - b.prazoDu);
+}
+
+export async function loadFocusIpca(): Promise<FocusIpcaPoint[]> {
+  const rows = await fetchCsv("focus_ipca.csv");
+  return rows
+    .map((r) => ({
+      dataColeta: r.data_coleta,
+      variavel: r.variavel,
+      mediana: parseFloat(r.mediana),
+    }))
+    .filter((r) => !isNaN(r.mediana))
+    .sort((a, b) => a.dataColeta.localeCompare(b.dataColeta));
+}
+
 export const META_INFLACAO = 3.0;
 export const PIB_POTENCIAL = 2.5;
 
