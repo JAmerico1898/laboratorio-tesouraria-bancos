@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { loadSelicMeta, loadSelicOver, loadCdiDiario, fatorCdiAcumulado } from "@/lib/data";
 import type { RateDataPoint } from "@/lib/data";
-import { fmtPct, fmtBrl, fmtNum } from "@/lib/format";
+import { fmtPct, fmtBrl } from "@/lib/format";
 import { PlotlyChart } from "@/components/plotly-chart";
 import { PLOTLY_LAYOUT, PLOTLY_CONFIG } from "@/lib/chart-config";
 
