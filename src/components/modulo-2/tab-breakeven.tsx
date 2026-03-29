@@ -164,10 +164,10 @@ export function TabBreakeven() {
         <div className="px-5 pb-5 space-y-4 text-sm text-on-surface-variant">
           <p><strong className="text-on-surface">Relação de Fisher:</strong></p>
           <div className="text-center">
-            <KMath tex="(1 + i_{nominal}) = (1 + i_{real}) \times (1 + \pi^{implícita})" display />
+            <KMath tex={"(1 + i_{nominal}) = (1 + i_{real}) \\times (1 + \\pi^{\\text{implícita}})"} display />
           </div>
           <div className="text-center">
-            <KMath tex="\pi^{implícita} = \frac{1 + i_{LTN}}{1 + i_{NTN\text{-}B}} - 1" display />
+            <KMath tex={"\\pi^{\\text{implícita}} = \\frac{1 + i_{LTN}}{1 + i_{NTN\\text{-}B}} - 1"} display />
           </div>
           <p>
             A inflação implícita <strong className="text-on-surface">não</strong> é igual à

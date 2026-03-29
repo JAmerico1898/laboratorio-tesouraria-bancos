@@ -362,7 +362,7 @@ export function EttjTaxaSpotContent() {
 
           {/* Comparison mode */}
           {isComparison && (
-            <div className="px-4 py-4 space-y-6">
+            <div className="px-4 pt-14 pb-4 space-y-6">
               <ComparisonChart
                 dataA={{
                   xObs: xData,
@@ -424,7 +424,7 @@ export function EttjTaxaSpotContent() {
 
           {/* Single mode */}
           {!isComparison && contracts && result && (
-            <div className="px-4 py-4 space-y-6">
+            <div className="px-4 pt-14 pb-4 space-y-6">
               <YieldCurveChart
                 xObserved={xData}
                 yObserved={yData.map((v) => v * 100)}

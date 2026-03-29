@@ -70,7 +70,7 @@ export function TabAnatomiaTaxa() {
         <div className="px-5 pb-5 space-y-4 text-sm text-on-surface-variant">
           <p>A taxa de juros de qualquer instrumento pode ser decomposta em cinco componentes:</p>
           <div className="text-center">
-            <KMath tex="i_{nominal} = i_{real} + \pi^e + \phi_{crédito} + \phi_{liquidez} + \phi_{prazo}" display />
+            <KMath tex={"i_{nominal} = i_{real} + \\pi^e + \\phi_{\\text{crédito}} + \\phi_{\\text{liquidez}} + \\phi_{\\text{prazo}}"} display />
           </div>
           <ul className="space-y-1 list-disc pl-5">
             <li><strong className="text-on-surface">Taxa real livre de risco:</strong> remuneração pelo uso do capital no tempo, sem risco. Proxy: NTN-B curta.</li>

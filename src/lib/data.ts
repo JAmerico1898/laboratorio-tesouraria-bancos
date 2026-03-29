@@ -187,3 +187,56 @@ export function fatorCdiAcumulado(
   }
   return result;
 }
+
+// --- Cupom Cambial data loaders ---
+
+export interface DolarFuturoPoint {
+  data: string;
+  prazoDu: number;
+  dc: number;
+  cotacao: number;
+}
+
+export interface DolarSpotPoint {
+  data: string;
+  valor: number;
+}
+
+export interface CupomHistPoint {
+  data: string;
+  prazoMeses: number;
+  cupomAa: number;
+}
+
+export async function loadDolarFuturo(): Promise<DolarFuturoPoint[]> {
+  const rows = await fetchCsv("dolar_futuro.csv");
+  return rows
+    .map((r) => ({
+      data: r.data,
+      prazoDu: parseInt(r.prazo_du, 10),
+      dc: parseInt(r.dc, 10),
+      cotacao: parseFloat(r.cotacao),
+    }))
+    .filter((r) => !isNaN(r.prazoDu) && !isNaN(r.cotacao))
+    .sort((a, b) => a.data.localeCompare(b.data) || a.prazoDu - b.prazoDu);
+}
+
+export async function loadDolarSpot(): Promise<DolarSpotPoint[]> {
+  const rows = await fetchCsv("dolar_spot_ptax.csv");
+  return rows
+    .map((r) => ({ data: r.data, valor: parseFloat(r.valor) }))
+    .filter((r) => !isNaN(r.valor))
+    .sort((a, b) => a.data.localeCompare(b.data));
+}
+
+export async function loadCupomHist(): Promise<CupomHistPoint[]> {
+  const rows = await fetchCsv("cupom_cambial_hist.csv");
+  return rows
+    .map((r) => ({
+      data: r.data,
+      prazoMeses: parseInt(r.prazo_meses, 10),
+      cupomAa: parseFloat(r.cupom_aa),
+    }))
+    .filter((r) => !isNaN(r.prazoMeses) && !isNaN(r.cupomAa))
+    .sort((a, b) => a.data.localeCompare(b.data));
+}
