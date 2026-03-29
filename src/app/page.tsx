@@ -1,10 +1,10 @@
-import { Hero } from "@/components/hero";
+import { HeroSection } from "@/components/HeroSection";
 import { ModuleCards } from "@/components/module-cards";
 
 export default function HomePage() {
   return (
     <main className="mesh-bg pt-20">
-      <Hero />
+      <HeroSection />
       <ModuleCards />
     </main>
   );
