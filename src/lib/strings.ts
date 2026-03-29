@@ -4,8 +4,8 @@ export const strings = {
 
   // Hero
   eyebrow: "Laboratório de Tesouraria de Bancos",
-  heroHeadline1: "Sua Janela para a",
-  heroHeadline2: "Inteligência Financeira",
+  heroHeadline1: "Laboratório de",
+  heroHeadline2: "Tesouraria Bancária",
   heroSubtitle:
     "Pratique decisões de tesouraria com dados e cenários do mercado brasileiro",
 
