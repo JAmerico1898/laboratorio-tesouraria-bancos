@@ -7,7 +7,7 @@ export const strings = {
   heroHeadline1: "Sua Janela para a",
   heroHeadline2: "Inteligência Financeira",
   heroSubtitle:
-    "Desenvolva maestria estratégica através do rigor acadêmico e da experimentação prática em tesouraria bancária",
+    "Pratique decisões de tesouraria com dados e cenários do mercado brasileiro",
 
   // Modules section
   modulesHeading: "Nossos Módulos",
