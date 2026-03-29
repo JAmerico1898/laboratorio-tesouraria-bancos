@@ -102,16 +102,16 @@ export function YieldCurve() {
       <svg
         viewBox="0 0 100 100"
         style={{
-          width: "85%",
-          height: "80%",
+          width: "96%",
+          height: "90%",
           overflow: "visible",
         }}
       >
         <defs>
           {/* Area gradient fill */}
           <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#d4a853" stopOpacity={0.2} />
-            <stop offset="100%" stopColor="#d4a853" stopOpacity={0.01} />
+            <stop offset="0%" stopColor="#d4a853" stopOpacity={0.3} />
+            <stop offset="100%" stopColor="#d4a853" stopOpacity={0.03} />
           </linearGradient>
           {/* Glow filter for the line */}
           <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
@@ -124,7 +124,7 @@ export function YieldCurve() {
         </defs>
 
         {/* Grid lines */}
-        <g opacity={gridOpacity * 0.5}>
+        <g opacity={gridOpacity}>
           {/* Horizontal grid */}
           {GRID_Y.map((g) => (
             <g key={g.label}>
@@ -133,13 +133,13 @@ export function YieldCurve() {
                 y1={g.y}
                 x2="96"
                 y2={g.y}
-                stroke="rgba(255,255,255,0.06)"
+                stroke="rgba(255,255,255,0.12)"
                 strokeWidth="0.2"
               />
               <text
                 x="3"
                 y={g.y + 1.2}
-                fill="rgba(255,255,255,0.2)"
+                fill="rgba(255,255,255,0.45)"
                 fontSize="2.5"
                 fontFamily="var(--font-space-grotesk), monospace"
                 textAnchor="end"
@@ -156,13 +156,13 @@ export function YieldCurve() {
                 y1="15"
                 x2={v.x}
                 y2="88"
-                stroke="rgba(255,255,255,0.04)"
+                stroke="rgba(255,255,255,0.08)"
                 strokeWidth="0.2"
               />
               <text
                 x={v.x}
                 y="93"
-                fill="rgba(255,255,255,0.2)"
+                fill="rgba(255,255,255,0.45)"
                 fontSize="2.5"
                 fontFamily="var(--font-space-grotesk), monospace"
                 textAnchor="middle"
@@ -177,7 +177,7 @@ export function YieldCurve() {
             y1="88"
             x2="96"
             y2="88"
-            stroke="rgba(255,255,255,0.08)"
+            stroke="rgba(255,255,255,0.18)"
             strokeWidth="0.2"
           />
         </g>
@@ -186,7 +186,7 @@ export function YieldCurve() {
         <text
           x="6"
           y="13"
-          fill="rgba(255,255,255,0.25)"
+          fill="rgba(255,255,255,0.5)"
           fontSize="3"
           fontFamily="var(--font-space-grotesk), monospace"
           opacity={titleOpacity}
@@ -264,8 +264,8 @@ export function YieldCurve() {
                   width="10"
                   height="4.5"
                   rx="1"
-                  fill="rgba(212,168,83,0.1)"
-                  stroke="rgba(212,168,83,0.25)"
+                  fill="rgba(212,168,83,0.2)"
+                  stroke="rgba(212,168,83,0.5)"
                   strokeWidth="0.15"
                 />
                 <text
@@ -275,7 +275,7 @@ export function YieldCurve() {
                   fontSize="2.5"
                   fontFamily="var(--font-space-grotesk), monospace"
                   textAnchor="middle"
-                  opacity={0.85}
+                  opacity={1}
                 >
                   {v.rate}
                 </text>
