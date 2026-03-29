@@ -7,11 +7,11 @@ const CHART = { left: 10, right: 96, top: 10, bottom: 90 };
 const RATE_MIN = -0.02; // -200bps
 const RATE_MAX = 0.02;  // +200bps
 const PU_MIN = -0.15;   // -15%
-const PU_MAX = 0.15;    // +15%
+const PU_MAX = 0.25;    // +25%
 
 // Duration and convexity parameters
 const DURATION = 6;
-const CONVEXITY = 50;
+const CONVEXITY = 400;
 
 function rateToX(rate: number): number {
   return CHART.left + ((rate - RATE_MIN) / (RATE_MAX - RATE_MIN)) * (CHART.right - CHART.left);
@@ -68,8 +68,8 @@ function buildGainArea(steps: number): string {
 
 const GRID_RATES = [-0.02, -0.01, 0, 0.01, 0.02];
 const GRID_RATE_LABELS = ["-200", "-100", "0", "+100", "+200"];
-const GRID_PU = [-0.15, -0.10, -0.05, 0, 0.05, 0.10, 0.15];
-const GRID_PU_LABELS = ["-15%", "-10%", "-5%", "0%", "+5%", "+10%", "+15%"];
+const GRID_PU = [-0.15, -0.10, -0.05, 0, 0.05, 0.10, 0.15, 0.20, 0.25];
+const GRID_PU_LABELS = ["-15%", "-10%", "-5%", "0%", "+5%", "+10%", "+15%", "+20%", "+25%"];
 
 // Animation timing
 const DUR_START = 30;
