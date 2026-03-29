@@ -2,6 +2,7 @@ import { strings } from "@/lib/strings";
 import { TopicCard } from "@/components/topic-card";
 import { ExerciseCTA } from "@/components/exercise-cta";
 import { ProgressionBar } from "@/components/progression-bar";
+import { Mod3HeroSection } from "@/components/Mod3HeroSection";
 
 export const metadata = {
   title: "Precificação de Ativos | Laboratório de Tesouraria",
@@ -41,22 +42,11 @@ const PROGRESSION_STEPS = [
 export default function Module3Page() {
   return (
     <main className="mesh-bg pt-8 pb-20">
-      {/* Hero */}
-      <section className="relative text-center px-6 pt-12 pb-10 max-w-4xl mx-auto">
-        <div className="pointer-events-none absolute top-4 right-8 w-[180px] h-[180px] rounded-full bg-primary/[0.06] blur-[80px]" />
-        <span className="font-label text-primary tracking-[0.3em] text-xs uppercase font-medium">
-          {strings.mod3Eyebrow}
-        </span>
-        <h1 className="font-headline text-3xl md:text-5xl font-extrabold mt-3 mb-2 tracking-tight">
-          {strings.mod3Title}
-        </h1>
-        <p className="text-on-surface-variant text-base md:text-lg">
-          {strings.mod3Subtitle}
-        </p>
-      </section>
+      {/* Remotion Hero */}
+      <Mod3HeroSection />
 
       {/* Overview */}
-      <section className="px-6 max-w-4xl mx-auto mb-6">
+      <section className="px-6 max-w-4xl mx-auto mb-6 mt-10">
         <div className="glass-card rounded-xl p-6 md:p-8">
           <span className="font-label text-primary tracking-[0.15em] text-[10px] uppercase font-semibold block mb-3">
             {strings.mod3OverviewLabel}
