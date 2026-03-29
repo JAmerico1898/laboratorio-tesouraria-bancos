@@ -3,7 +3,7 @@ import { YieldCurve } from "./YieldCurve";
 import { HeroText } from "./HeroText";
 
 export const HERO_COMP_WIDTH = 1920;
-export const HERO_COMP_HEIGHT = 1080;
+export const HERO_COMP_HEIGHT = 800;
 export const HERO_FPS = 30;
 export const HERO_DURATION_FRAMES = 300; // 10 seconds
 
