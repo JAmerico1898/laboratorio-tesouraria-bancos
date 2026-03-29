@@ -3,7 +3,7 @@ export const strings = {
   siteTitle: "Laboratório de Tesouraria",
 
   // Hero
-  eyebrow: "Laboratório de Tesouraria de Bancos",
+  eyebrow: "",
   heroHeadline1: "Laboratório de",
   heroHeadline2: "Tesouraria Bancária",
   heroSubtitle:
