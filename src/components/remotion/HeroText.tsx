@@ -1,17 +1,15 @@
-import { useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
+import { useCurrentFrame, interpolate } from "remotion";
 import { strings } from "@/lib/strings";
 
-// Phase timing (frames at 30fps)
-const TITLE_START = 90;   // 3s — after curve draws
-const TITLE_END = 150;    // 5s
-const SUBTITLE_START = 150; // 5s
-const SUBTITLE_END = 195;   // 6.5s
+// Phase timing (frames at 30fps) — text starts at 6s
+const TITLE_START = 180;    // 6s — after chart has been on screen
+const SUBTITLE_START = 240;  // 8s
+const SUBTITLE_END = 265;    // ~8.8s
 const FADEOUT_START = 270;   // 9s
 const FADEOUT_END = 300;     // 10s
 
 export function HeroText() {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
 
   // --- Eyebrow: fade in at TITLE_START ---
   const eyebrowOpacity = interpolate(
@@ -23,8 +21,8 @@ export function HeroText() {
 
   // --- Headline 1: type letter by letter ---
   const h1Text = strings.heroHeadline1;
-  const h1TotalFrames = 30; // 1 second to type
-  const h1Start = TITLE_START + 15;
+  const h1TotalFrames = 25;
+  const h1Start = TITLE_START + 12;
   const h1CharCount = Math.floor(
     interpolate(frame, [h1Start, h1Start + h1TotalFrames], [0, h1Text.length], {
       extrapolateLeft: "clamp",
@@ -34,8 +32,8 @@ export function HeroText() {
 
   // --- Headline 2: type letter by letter after h1 ---
   const h2Text = strings.heroHeadline2;
-  const h2Start = h1Start + h1TotalFrames + 5;
-  const h2TotalFrames = 35;
+  const h2Start = h1Start + h1TotalFrames + 3;
+  const h2TotalFrames = 30;
   const h2CharCount = Math.floor(
     interpolate(frame, [h2Start, h2Start + h2TotalFrames], [0, h2Text.length], {
       extrapolateLeft: "clamp",
@@ -60,21 +58,37 @@ export function HeroText() {
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
+  // --- Container slide-in from left ---
+  const slideIn = interpolate(
+    frame,
+    [TITLE_START - 10, TITLE_START + 20],
+    [-30, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
+
+  const containerOpacity = interpolate(
+    frame,
+    [TITLE_START - 10, TITLE_START],
+    [0, 1],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
+
   return (
     <div
       style={{
         position: "absolute",
         left: 0,
         top: 0,
-        width: "55%",
+        width: "50%",
         height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         padding: "0 5%",
         gap: 8,
-        zIndex: 1,
-        opacity: fadeOut,
+        zIndex: 2,
+        opacity: fadeOut * containerOpacity,
+        transform: `translateX(${slideIn}px)`,
       }}
     >
       {/* Eyebrow */}
