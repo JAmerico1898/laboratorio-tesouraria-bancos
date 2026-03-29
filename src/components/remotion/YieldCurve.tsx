@@ -80,7 +80,7 @@ export function YieldCurve() {
       : 1;
 
   // Global fade-out for loop transition
-  const fadeOut = interpolate(frame, [270, 300], [1, 0], {
+  const fadeOut = interpolate(frame, [390, 450], [1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });

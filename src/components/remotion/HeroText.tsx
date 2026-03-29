@@ -1,12 +1,12 @@
 import { useCurrentFrame, interpolate } from "remotion";
 import { strings } from "@/lib/strings";
 
-// Phase timing (frames at 30fps) — text starts at 6s
-const TITLE_START = 180;    // 6s — after chart has been on screen
-const SUBTITLE_START = 240;  // 8s
-const SUBTITLE_END = 265;    // ~8.8s
-const FADEOUT_START = 270;   // 9s
-const FADEOUT_END = 300;     // 10s
+// Phase timing (frames at 30fps) — text starts at 5s
+const TITLE_START = 150;     // 5s — after chart has drawn
+const SUBTITLE_START = 210;  // 7s
+const SUBTITLE_END = 240;    // 8s
+const FADEOUT_START = 390;   // 13s — hold for 5 seconds of reading time
+const FADEOUT_END = 450;     // 15s
 
 export function HeroText() {
   const frame = useCurrentFrame();

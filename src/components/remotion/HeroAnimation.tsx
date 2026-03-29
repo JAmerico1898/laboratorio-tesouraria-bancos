@@ -5,22 +5,22 @@ import { HeroText } from "./HeroText";
 export const HERO_COMP_WIDTH = 1920;
 export const HERO_COMP_HEIGHT = 800;
 export const HERO_FPS = 30;
-export const HERO_DURATION_FRAMES = 300; // 10 seconds
+export const HERO_DURATION_FRAMES = 450; // 15 seconds
 
 export function HeroAnimation() {
   const frame = useCurrentFrame();
 
   // Slow gradient shift over the full duration
-  const gradientAngle = interpolate(frame, [0, 300], [135, 155], {
+  const gradientAngle = interpolate(frame, [0, 450], [135, 155], {
     extrapolateRight: "clamp",
   });
 
-  const bgShift = interpolate(frame, [0, 300], [0, 10], {
+  const bgShift = interpolate(frame, [0, 450], [0, 10], {
     extrapolateRight: "clamp",
   });
 
   // Gradient mask fades in at ~5.7s to create space for text
-  const maskOpacity = interpolate(frame, [170, 195], [0, 1], {
+  const maskOpacity = interpolate(frame, [140, 165], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
