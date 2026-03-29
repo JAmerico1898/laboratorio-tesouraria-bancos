@@ -17,18 +17,31 @@ export function Mod1HeroText() {
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
 
-  const titleText = strings.mod1Title;
-  const titleStart = TITLE_START + 12;
-  const titleTotalFrames = 35;
-  const titleCharCount = Math.floor(
-    interpolate(frame, [titleStart, titleStart + titleTotalFrames], [0, titleText.length], {
+  // Split title into two lines: "Operações" and "Fundamentais"
+  const titleWords = strings.mod1Title.split(" ");
+  const line1 = titleWords[0]; // "Operações"
+  const line2 = titleWords.slice(1).join(" "); // "Fundamentais"
+
+  const line1Start = TITLE_START + 12;
+  const line1Frames = 18;
+  const line1CharCount = Math.floor(
+    interpolate(frame, [line1Start, line1Start + line1Frames], [0, line1.length], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    })
+  );
+
+  const line2Start = line1Start + line1Frames + 3;
+  const line2Frames = 22;
+  const line2CharCount = Math.floor(
+    interpolate(frame, [line2Start, line2Start + line2Frames], [0, line2.length], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     })
   );
 
   const showCursor =
-    frame >= titleStart && frame <= titleStart + titleTotalFrames + 10;
+    frame >= line1Start && frame <= line2Start + line2Frames + 10;
   const cursorOpacity = showCursor ? (Math.sin(frame * 0.4) > 0 ? 1 : 0) : 0;
 
   const subtitleOpacity = interpolate(
@@ -102,9 +115,33 @@ export function Mod1HeroText() {
             letterSpacing: "-0.02em",
           }}
         >
-          {titleText.slice(0, titleCharCount)}
-          {showCursor && (
+          {line1.slice(0, line1CharCount)}
+          {frame >= line1Start && frame < line2Start && (
             <span style={{ opacity: cursorOpacity, color: "#58f5d1" }}>|</span>
+          )}
+        </div>
+        <div
+          style={{
+            fontFamily: "var(--font-manrope), sans-serif",
+            fontSize: 64,
+            fontWeight: 800,
+            lineHeight: 1.1,
+            letterSpacing: "-0.02em",
+            background: "linear-gradient(to right, #58f5d1, #1cd0ad)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          {line2.slice(0, line2CharCount)}
+          {frame >= line2Start && frame < line2Start + line2Frames + 10 && (
+            <span
+              style={{
+                opacity: cursorOpacity,
+                WebkitTextFillColor: "#58f5d1",
+              }}
+            >
+              |
+            </span>
           )}
         </div>
       </div>
