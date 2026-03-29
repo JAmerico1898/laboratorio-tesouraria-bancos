@@ -1,7 +1,6 @@
 import { strings } from "@/lib/strings";
 import { TopicCard } from "@/components/topic-card";
 import { ExerciseCTA } from "@/components/exercise-cta";
-import { ProgressionBar } from "@/components/progression-bar";
 import { Mod2HeroSection } from "@/components/Mod2HeroSection";
 
 export const metadata = {
@@ -39,13 +38,6 @@ const TOPICS = [
   },
 ];
 
-const PROGRESSION_STEPS = [
-  { icon: "🧩", label: "Componentes", href: "/modulo-2/componentes-taxa" },
-  { icon: "📈", label: "ETTJ", href: "/modulo-2/ettj-taxa-spot", active: true },
-  { icon: "🔮", label: "Forward", href: "/modulo-2/taxa-forward" },
-  { icon: "💱", label: "Cupom", href: "/modulo-2/cupom-cambial" },
-  { icon: "🎯", label: "Integrador", href: "/modulo-2/exercicio" },
-];
 
 export default function Module2Page() {
   return (
@@ -75,14 +67,6 @@ export default function Module2Page() {
             {strings.mod2ConnectionText}
           </p>
         </div>
-      </section>
-
-      {/* Progression Bar */}
-      <section className="px-6 max-w-4xl mx-auto mb-8">
-        <ProgressionBar
-          label={strings.mod2ProgressionLabel}
-          steps={PROGRESSION_STEPS}
-        />
       </section>
 
       {/* Topic Cards */}

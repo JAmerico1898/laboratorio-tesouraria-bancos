@@ -1,7 +1,6 @@
 import { strings } from "@/lib/strings";
 import { TopicCard } from "@/components/topic-card";
 import { ExerciseCTA } from "@/components/exercise-cta";
-import { ProgressionBar } from "@/components/progression-bar";
 import { Mod4HeroSection } from "@/components/Mod4HeroSection";
 
 export const metadata = {
@@ -39,13 +38,6 @@ const TOPICS = [
   },
 ];
 
-const PROGRESSION_STEPS = [
-  { icon: "📊", label: "Estratégias", href: "/modulo-4/estrategias" },
-  { icon: "⚠️", label: "Risco", href: "/modulo-4/risco-taxa" },
-  { icon: "📐", label: "Duration", href: "/modulo-4/duration-convexidade" },
-  { icon: "🛡️", label: "Imunização", href: "/modulo-4/imunizacao" },
-  { icon: "🎯", label: "Integrador", href: "/modulo-4/exercicio" },
-];
 
 export default function Module4Page() {
   return (
@@ -75,11 +67,6 @@ export default function Module4Page() {
             {strings.mod4ConnectionText}
           </p>
         </div>
-      </section>
-
-      {/* Progression */}
-      <section className="px-6 max-w-4xl mx-auto mb-8">
-        <ProgressionBar label={strings.mod4ProgressionLabel} steps={PROGRESSION_STEPS} />
       </section>
 
       {/* Topic Cards */}

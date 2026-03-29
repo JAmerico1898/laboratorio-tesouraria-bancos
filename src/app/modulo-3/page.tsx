@@ -1,7 +1,6 @@
 import { strings } from "@/lib/strings";
 import { TopicCard } from "@/components/topic-card";
 import { ExerciseCTA } from "@/components/exercise-cta";
-import { ProgressionBar } from "@/components/progression-bar";
 import { Mod3HeroSection } from "@/components/Mod3HeroSection";
 
 export const metadata = {
@@ -32,12 +31,6 @@ const TOPICS = [
   },
 ];
 
-const PROGRESSION_STEPS = [
-  { icon: "🇧🇷", label: "Públicos", href: "/modulo-3/titulos-publicos" },
-  { icon: "🏦", label: "IFs", href: "/modulo-3/titulos-ifs" },
-  { icon: "🏢", label: "Corporativo", href: "/modulo-3/credito-corporativo" },
-  { icon: "⚖️", label: "Integrador", href: "/modulo-3/exercicio" },
-];
 
 export default function Module3Page() {
   return (
@@ -67,14 +60,6 @@ export default function Module3Page() {
             {strings.mod3ConnectionText}
           </p>
         </div>
-      </section>
-
-      {/* Progression Bar */}
-      <section className="px-6 max-w-4xl mx-auto mb-8">
-        <ProgressionBar
-          label={strings.mod3ProgressionLabel}
-          steps={PROGRESSION_STEPS}
-        />
       </section>
 
       {/* Topic Cards */}
