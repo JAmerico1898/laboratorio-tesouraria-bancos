@@ -11,13 +11,17 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@remotion/cli": "^4.0.438",
+    "@remotion/player": "^4.0.441",
+    "@remotion/tailwind": "^4.0.388",
     "katex": "^0.16.44",
     "ml-levenberg-marquardt": "^5.0.0",
     "next": "16.2.1",
     "plotly.js": "^3.4.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-plotly.js": "^2.6.0"
+    "react-plotly.js": "^2.6.0",
+    "remotion": "^4.0.441"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
