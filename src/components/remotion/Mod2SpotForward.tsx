@@ -351,10 +351,10 @@ export function Mod2SpotForward() {
             [0, 1],
             { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
           );
-          // Place badge above dot normally, but if too close to spot badge below,
-          // push it further up to avoid overlap
-          const gap = Math.abs(fwdY - spotY);
-          const badgeOffsetY = gap < 10 ? -9 : -6;
+          // Last vertex: badge below the dot to avoid spot label collision
+          // Others: badge above the dot
+          const isLast = v.label === VERTICES[VERTICES.length - 1].label;
+          const badgeOffsetY = isLast ? 2 : -6;
           return (
             <g key={`fwd-${v.label}`}>
               <circle cx={v.x} cy={fwdY} r={0.8 * dotScale} fill="#d4a853" />
