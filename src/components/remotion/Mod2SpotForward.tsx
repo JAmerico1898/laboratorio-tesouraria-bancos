@@ -263,7 +263,12 @@ export function Mod2SpotForward() {
           }}
         />
 
-        {/* Forward curve (dashed) */}
+        {/* Forward curve clip for draw animation */}
+        <clipPath id="mod2FwdClip">
+          <rect x="0" y="0" width={fwdProgress * 100} height="100" />
+        </clipPath>
+
+        {/* Forward curve (dashed, traced via clipPath) */}
         <path
           d={fwdPath}
           stroke="#d4a853"
@@ -272,10 +277,7 @@ export function Mod2SpotForward() {
           strokeLinecap="round"
           strokeDasharray="2,1.2"
           filter="url(#mod2Glow)"
-          style={{
-            strokeDasharray: "2,1.2",
-            strokeDashoffset: frame < FWD_START ? 200 : 200 * (1 - fwdProgress),
-          }}
+          clipPath="url(#mod2FwdClip)"
         />
 
         {/* Spot vertex dots + rate badges */}
@@ -335,6 +337,7 @@ export function Mod2SpotForward() {
         {/* Forward vertex dots + rate badges */}
         {VERTICES.map((v) => {
           const fwdY = rateToY(v.fwd);
+          const spotY = rateToY(v.spot);
           const vertexNorm = (v.x - VERTICES[0].x) / (VERTICES[VERTICES.length - 1].x - VERTICES[0].x);
           const appearFrame = FWD_START + vertexNorm * (FWD_END - FWD_START);
           const dotScale = spring({
@@ -348,13 +351,17 @@ export function Mod2SpotForward() {
             [0, 1],
             { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
           );
+          // Place badge above dot normally, but if too close to spot badge below,
+          // push it further up to avoid overlap
+          const gap = Math.abs(fwdY - spotY);
+          const badgeOffsetY = gap < 10 ? -9 : -6;
           return (
             <g key={`fwd-${v.label}`}>
               <circle cx={v.x} cy={fwdY} r={0.8 * dotScale} fill="#d4a853" />
               <g opacity={badgeOpacity}>
                 <rect
                   x={v.x - 4.5}
-                  y={fwdY - 6}
+                  y={fwdY + badgeOffsetY}
                   width="9"
                   height="4"
                   rx="0.8"
@@ -364,7 +371,7 @@ export function Mod2SpotForward() {
                 />
                 <text
                   x={v.x}
-                  y={fwdY - 3.2}
+                  y={fwdY + badgeOffsetY + 2.8}
                   fill="#d4a853"
                   fontSize="2.2"
                   fontFamily="var(--font-space-grotesk), monospace"
