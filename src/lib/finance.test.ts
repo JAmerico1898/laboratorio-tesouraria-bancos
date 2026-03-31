@@ -38,9 +38,26 @@ describe("taxaEquivalente", () => {
     const monthly = taxaEquivalente(0.1375, "anual_252", "mensal");
     expect(monthly).toBeCloseTo(0.01079, 3);
   });
-  it("converts annual_252 to annual_360", () => {
+  it("converts annual_252 to annual_360 using DU/DC bridge", () => {
+    // 360 DC = 360 × 252/365 ≈ 248.877 DU
+    // Result must be LESS than 13.75% (fewer DU of compounding than 252)
     const a360 = taxaEquivalente(0.1375, "anual_252", "anual_360");
-    expect(a360).toBeGreaterThan(0.1375);
+    expect(a360).toBeCloseTo(0.1356, 3);
+    expect(a360).toBeLessThan(0.1375);
+  });
+
+  it("roundtrips anual_252 → anual_360 → anual_252", () => {
+    const a360 = taxaEquivalente(0.1375, "anual_252", "anual_360");
+    const back = taxaEquivalente(a360, "anual_360", "anual_252");
+    expect(back).toBeCloseTo(0.1375, 8);
+  });
+
+  it("anual_360 uses DU/DC bridge (252 DU = 365 DC)", () => {
+    const daily = taxaEquivalente(0.1375, "anual_252", "diaria");
+    // Manual computation: (1 + daily)^(360 × 252/365) - 1
+    const expected = Math.pow(1 + daily, 360 * 252 / 365) - 1;
+    const a360 = taxaEquivalente(0.1375, "anual_252", "anual_360");
+    expect(a360).toBeCloseTo(expected, 10);
   });
 });
 

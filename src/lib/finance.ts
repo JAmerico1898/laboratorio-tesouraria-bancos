@@ -1,8 +1,13 @@
 export type Base = "anual_252" | "anual_360" | "mensal" | "diaria";
 
-const BASE_DAYS: Record<Base, number> = {
+export const DU_PER_YEAR = 252;
+export const DC_PER_YEAR = 365;
+
+// All bases expressed in DU (business days).
+// anual_360: 360 calendar days × (252 DU / 365 DC) ≈ 248.877 DU
+export const BASE_DU: Record<Base, number> = {
   anual_252: 252,
-  anual_360: 360,
+  anual_360: 360 * DU_PER_YEAR / DC_PER_YEAR,
   mensal: 21,
   diaria: 1,
 };
@@ -13,8 +18,8 @@ export function puLtn(taxaAa: number, du: number): number {
 }
 
 export function taxaEquivalente(taxa: number, de: Base, para: Base): number {
-  const nDe = BASE_DAYS[de];
-  const nPara = BASE_DAYS[para];
+  const nDe = BASE_DU[de];
+  const nPara = BASE_DU[para];
   const daily = Math.pow(1 + taxa, 1 / nDe) - 1;
   return Math.pow(1 + daily, nPara) - 1;
 }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Math as KMath } from "@/components/math";
-import { taxaEquivalente } from "@/lib/finance";
+import { taxaEquivalente, BASE_DU } from "@/lib/finance";
 import { diasUteis, diasCorridos } from "@/lib/holidays";
 import { fmtPct, fmtBrl, fmtNum } from "@/lib/format";
 import type { Base } from "@/lib/finance";
@@ -81,13 +81,23 @@ export function TabCapitalizacao() {
   // Step-by-step for single conversion
   function buildSteps(from: Base, to: Base, taxa: number): string[] {
     const steps: string[] = [];
-    const daily = Math.pow(1 + taxa, 1 / 252) - 1;
+    const nDe = BASE_DU[from];
+    const nPara = BASE_DU[to];
+    const involves360 = from === "anual_360" || to === "anual_360";
+
+    if (involves360) {
+      steps.push(
+        `Premissa: 252 DU = 365 DC, portanto 360 DC = 360 × 252/365 ≈ ${fmtNum(BASE_DU.anual_360)} DU`
+      );
+    }
+
+    const daily = Math.pow(1 + taxa, 1 / nDe) - 1;
     steps.push(
-      `Taxa diária: (1 + ${fmtPct(taxa, 4)})^(1/252) − 1 = ${fmtPct(daily, 6)}`
+      `Taxa diária (DU): (1 + ${fmtPct(taxa, 4)})^(1/${fmtNum(nDe)}) − 1 = ${fmtPct(daily, 6)}`
     );
     const result = taxaEquivalente(taxa, from, to);
     steps.push(
-      `Taxa ${to}: (1 + ${fmtPct(daily, 6)})^(dias_${to}) − 1 = ${fmtPct(result, 4)}`
+      `Taxa ${to}: (1 + ${fmtPct(daily, 6)})^(${fmtNum(nPara)}) − 1 = ${fmtPct(result, 4)}`
     );
     return steps;
   }
@@ -242,7 +252,7 @@ export function TabCapitalizacao() {
                 </thead>
                 <tbody>
                   {conversions.map((c, i) => {
-                    const dailyFactor = Math.pow(1 + c.value, 1 / (c.key === "anual_252" ? 252 : c.key === "anual_360" ? 360 : c.key === "mensal" ? 21 : 1));
+                    const dailyFactor = Math.pow(1 + c.value, 1 / BASE_DU[c.key]);
                     return (
                       <tr
                         key={c.key}
